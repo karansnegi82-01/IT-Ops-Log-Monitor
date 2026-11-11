@@ -100,27 +100,23 @@ void exportIncidentReport(unordered_map<string, int>& counts, const vector<strin
         cout << "Failed to create report file.\n";
         return;
     }
-
     reportFile << "=== AUTOMATED INCIDENT REPORT ===\n";
     reportFile << "Total Errors Found: " << counts["ERROR"] << "\n\n";
     reportFile << "Critical Error Logs:\n";
     for (const string& err : errorLogs) {
         reportFile << "- " << err << "\n";
     }
-
     reportFile.close();
     cout << "\nReport successfully saved to 'incident_report.txt'!\n";
 }
 
 int main() {
     string logFileName = "server_logs.txt";
-    
-    generateSampleLogs(logFileName);
+     generateSampleLogs(logFileName);
 
     unordered_map<string, int> logCounts;
     vector<string> allLogs;
     vector<string> errorLogs;
-
     if (!loadLogs(logFileName, logCounts, allLogs, errorLogs)) {
         cout << "Error: Could not open " << logFileName << "\n";
         return 1;
@@ -136,15 +132,13 @@ int main() {
         cout << "5. Exit\n";
         cout << "Enter your choice (1-5): ";
 
-        // Basic check in case user enters a letter instead of a number
         if (!(cin >> choice)) {
             cin.clear();
             cin.ignore(1000, '\n');
             cout << "Invalid input. Please enter a number between 1 and 5.\n";
             continue;
         }
-
-        if (choice == 1) {
+       if (choice == 1) {
             showHealthReport(logCounts, allLogs.size());
         } else if (choice == 2) {
             cout << "\n--- Critical Error Logs ---\n";
@@ -162,6 +156,5 @@ int main() {
             cout << "Please choose a valid option (1-5).\n";
         }
     }
-
-    return 0;
+  return 0;
 }
