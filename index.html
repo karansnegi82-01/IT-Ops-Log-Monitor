@@ -74,7 +74,6 @@
 </div>
 
 <script>
-    
     let rawLogs = [
         "2026-11-11 09:15:02 INFO Server boot sequence completed",
         "2026-11-11 09:22:18 INFO User session initialized for ID_402",
@@ -90,7 +89,6 @@
     let currentSeverity = 'ALL';
     let errorList = [];
 
-    
     function analyzeLogs() {
         let counts = { INFO: 0, WARNING: 0, ERROR: 0 };
         errorList = [];
@@ -123,7 +121,6 @@
         filterLogs();
     }
 
-    
     function filterLogs() {
         const keyword = document.getElementById("searchInput").value.toLowerCase();
         const container = document.getElementById("logContainer");
@@ -151,7 +148,6 @@
         filterLogs();
     }
 
-    
     document.getElementById("fileInput").addEventListener("change", function(e) {
         const file = e.target.files[0];
         if (!file) return;
@@ -166,7 +162,6 @@
         reader.readAsText(file);
     });
 
-    
     function exportReport() {
         let content = "=== AUTOMATED INCIDENT REPORT ===\n";
         content += "Total Critical Errors: " + errorList.length + "\n\n";
@@ -179,7 +174,6 @@
         link.click();
     }
 
-    
     analyzeLogs();
 </script>
 </body>
